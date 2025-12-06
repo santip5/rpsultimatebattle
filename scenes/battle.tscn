@@ -1,0 +1,844 @@
+[gd_scene load_steps=45 format=3 uid="uid://bust0ufqdsut2"]
+
+[ext_resource type="Script" uid="uid://ctmhs77wo0uob" path="res://scripts/battle.gd" id="1_p1qf1"]
+[ext_resource type="FontFile" uid="uid://c4a3vwvhfg2lc" path="res://assets/the bubble letters.ttf" id="2_a12nh"]
+[ext_resource type="FontFile" uid="uid://wvmpndo8ivh1" path="res://assets/Lister.ttf" id="3_lpir7"]
+[ext_resource type="Texture2D" uid="uid://btve464icv5np" path="res://assets/reroll.png" id="4_a12nh"]
+[ext_resource type="AudioStream" uid="uid://bppefoyloo06d" path="res://assets/enemy_theme.mp3" id="5_lpir7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vh42"]
+bg_color = Color(0.73045343, 0.5721267, 0.29007217, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k1nj"]
+bg_color = Color(0.8305825, 0.16402346, 0.272622, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pi3"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yahae"]
+content_margin_right = 24.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7i3o"]
+bg_color = Color(0.8305825, 0.16402346, 0.272622, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66ngm"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03edq"]
+bg_color = Color(0.3817034, 0.38170314, 0.3817034, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22uqi"]
+bg_color = Color(0.796243, 0.796243, 0.796243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ni85"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1qf1"]
+content_margin_top = 24.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a12nh"]
+content_margin_top = 24.0
+
+[sub_resource type="Animation" id="Animation_a12nh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6vh42"]
+resource_name = "intro"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 300), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lpir7"]
+resource_name = "swipe_in"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-400, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p1qf1"]
+resource_name = "swipe_out"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(400, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vh42"]
+_data = {
+&"RESET": SubResource("Animation_a12nh"),
+&"intro": SubResource("Animation_6vh42"),
+&"swipe_in": SubResource("Animation_lpir7"),
+&"swipe_out": SubResource("Animation_p1qf1")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vceff"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekamt"]
+bg_color = Color(0.3328807, 0.33288068, 0.33288068, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djc8l"]
+bg_color = Color(0.796243, 0.796243, 0.796243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4dll"]
+
+[sub_resource type="Animation" id="Animation_v7i3o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yahae"]
+resource_name = "intro"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 300), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4k1nj"]
+resource_name = "swipe_in"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-400, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f4pi3"]
+resource_name = "swipe_out"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(400, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_66ngm"]
+_data = {
+&"RESET": SubResource("Animation_v7i3o"),
+&"intro": SubResource("Animation_yahae"),
+&"swipe_in": SubResource("Animation_4k1nj"),
+&"swipe_out": SubResource("Animation_f4pi3")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0caf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61i1y"]
+bg_color = Color(0.27752787, 0.27752766, 0.27752787, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_saiin"]
+bg_color = Color(0.796243, 0.796243, 0.796243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dd63g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpir7"]
+bg_color = Color(0.99215686, 0.9490196, 0.26666668, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ni85"]
+bg_color = Color(0.7141279, 0.6772998, 0.019818317, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4dll"]
+bg_color = Color(0.7721524, 0.7325197, 0.02183673, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0caf"]
+
+[sub_resource type="Animation" id="Animation_vceff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_03edq"]
+resource_name = "intro"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 300), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_22uqi"]
+resource_name = "swipe_in"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-400, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ni85"]
+resource_name = "swipe_out"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSlot3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(400, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardSlot3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekamt"]
+_data = {
+&"RESET": SubResource("Animation_vceff"),
+&"intro": SubResource("Animation_03edq"),
+&"swipe_in": SubResource("Animation_22uqi"),
+&"swipe_out": SubResource("Animation_6ni85")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpf3k"]
+content_margin_bottom = 101.0
+draw_center = false
+
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p1qf1")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vh42")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 15
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+split_offset = 900
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_constants/separation = 69
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="PlayerHP" type="ProgressBar" parent="MarginContainer/HSplitContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4k1nj")
+value = 50.0
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_f4pi3")
+text = "player hp"
+
+[node name="PlayerSelection" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_yahae")
+text = "Player chose Rock"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_constants/separation = 69
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="EnemyHP" type="ProgressBar" parent="MarginContainer/HSplitContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v7i3o")
+value = 50.0
+fill_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_f4pi3")
+text = "Enemy HP"
+horizontal_alignment = 2
+
+[node name="EnemySelection" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_yahae")
+text = "Enemy chose Paper"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 199
+alignment = 1
+
+[node name="CardSlotWrapper1" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="CardSlot1" type="Button" parent="MarginContainer/HBoxContainer/CardSlotWrapper1"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 0
+offset_right = 300.00006
+offset_bottom = 500.00012
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/align_to_largest_stylebox = 60
+theme_override_fonts/font = ExtResource("3_lpir7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_66ngm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_03edq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_22uqi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ni85")
+
+[node name="CardContent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CardSlotWrapper1/CardSlot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardTitle" type="Label" parent="MarginContainer/HBoxContainer/CardSlotWrapper1/CardSlot1/CardContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lpir7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p1qf1")
+text = "Card Title"
+horizontal_alignment = 1
+
+[node name="CardDesc" type="Label" parent="MarginContainer/HBoxContainer/CardSlotWrapper1/CardSlot1/CardContent"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a12nh")
+text = "Short description of the card goes here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CardIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/CardSlotWrapper1/CardSlot1/CardContent"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Anim" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/CardSlotWrapper1"]
+libraries = {
+&"": SubResource("AnimationLibrary_6vh42")
+}
+
+[node name="CardSlotWrapper2" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 2
+
+[node name="CardSlot2" type="Button" parent="MarginContainer/HBoxContainer/CardSlotWrapper2"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 500.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/align_to_largest_stylebox = 60
+theme_override_fonts/font = ExtResource("3_lpir7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_vceff")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekamt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_djc8l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h4dll")
+
+[node name="CardContent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CardSlotWrapper2/CardSlot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardTitle" type="Label" parent="MarginContainer/HBoxContainer/CardSlotWrapper2/CardSlot2/CardContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lpir7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p1qf1")
+text = "Card Title"
+horizontal_alignment = 1
+
+[node name="CardDesc" type="Label" parent="MarginContainer/HBoxContainer/CardSlotWrapper2/CardSlot2/CardContent"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a12nh")
+text = "Short description of the card goes here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CardIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/CardSlotWrapper2/CardSlot2/CardContent"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Anim" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/CardSlotWrapper2"]
+libraries = {
+&"": SubResource("AnimationLibrary_66ngm")
+}
+
+[node name="CardSlotWrapper3" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 2
+
+[node name="CardSlot3" type="Button" parent="MarginContainer/HBoxContainer/CardSlotWrapper3"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 500.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/align_to_largest_stylebox = 60
+theme_override_fonts/font = ExtResource("3_lpir7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_p0caf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_61i1y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_saiin")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dd63g")
+
+[node name="CardContent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardTitle" type="Label" parent="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3/CardContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lpir7")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p1qf1")
+text = "Card Title"
+horizontal_alignment = 1
+
+[node name="CardDesc" type="Label" parent="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3/CardContent"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a12nh")
+text = "Short description of the card goes here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CardIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3/CardContent"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="RerollButton" type="Button" parent="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 365.0
+offset_top = 450.0
+offset_right = 415.0
+offset_bottom = 500.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpir7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ni85")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h4dll")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p0caf")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3/RerollButton"]
+position = Vector2(27.499943, 23.999992)
+scale = Vector2(0.90000075, 0.95999986)
+texture = ExtResource("4_a12nh")
+
+[node name="Anim" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/CardSlotWrapper3"]
+libraries = {
+&"": SubResource("AnimationLibrary_ekamt")
+}
+
+[node name="Result" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a12nh")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = SubResource("StyleBoxFlat_fpf3k")
+text = "Rock Wins"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lpir7")
+volume_db = -20.036
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CardSlotWrapper1/CardSlot1" to="." method="_on_card_slot_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CardSlotWrapper2/CardSlot2" to="." method="_on_card_slot_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3" to="." method="_on_card_slot_3_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CardSlotWrapper3/CardSlot3/RerollButton" to="." method="_on_reroll_button_pressed"]

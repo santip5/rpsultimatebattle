@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhoyuuqmj3vwq"]
+
+[ext_resource type="FontFile" uid="uid://wvmpndo8ivh1" path="res://assets/Lister.ttf" id="1_okh34"]
+[ext_resource type="Script" uid="uid://bqms6hlw0q7q5" path="res://scripts/WinScreen.gd" id="1_q8i45"]
+[ext_resource type="FontFile" uid="uid://c4a3vwvhfg2lc" path="res://assets/the bubble letters.ttf" id="2_q8i45"]
+[ext_resource type="AudioStream" uid="uid://cq5vcfdx7j5ot" path="res://assets/menu_music.mp3" id="4_jrum5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrum5"]
+bg_color = Color(0.73045343, 0.5721267, 0.29007217, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4f3g"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_274dy"]
+bg_color = Color(0.3817034, 0.38170314, 0.3817034, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tad7g"]
+bg_color = Color(0.796243, 0.796243, 0.796243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cwvy"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q8i45")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jrum5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 79
+alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_okh34")
+theme_override_font_sizes/font_size = 128
+text = "Congratulations!"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q8i45")
+theme_override_font_sizes/font_size = 64
+text = "You defeated all enemies."
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_q8i45")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_f4f3g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_274dy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tad7g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cwvy")
+text = "Back to Main Menu"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jrum5")
+volume_db = -30.667
+autoplay = true
+parameters/looping = true
