@@ -126,7 +126,6 @@ var current_enemy_index := 0
 func _ready() -> void:
 	rng.randomize()
 	_update_ui()
-	_start_run()
 	
 	if RunState.enemy_order.is_empty():
 		# First time starting a run: build enemy order
